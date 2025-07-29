@@ -2,12 +2,11 @@
 
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import Button from './ui/Button';
+import { Menu, X } from 'lucide-react';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -18,11 +17,6 @@ const Header = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleTheme = () => {
-    setIsDark(!isDark);
-    document.documentElement.classList.toggle('dark');
-  };
 
   const navItems = [
     { name: 'Home', href: '#home' },
@@ -79,16 +73,7 @@ const Header = () => {
 
           {/* Theme Toggle & Mobile Menu */}
           <div className="flex items-center space-x-4">
-            <motion.button
-              onClick={toggleTheme}
-              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              {isDark ? <Sun size={20} /> : <Moon size={20} />}
-            </motion.button>
-
-            {/* Mobile Menu Button */}
+            <ThemeToggle />
             <button
               className="md:hidden p-2"
               onClick={() => setIsOpen(!isOpen)}
@@ -102,10 +87,7 @@ const Header = () => {
         <motion.nav
           className={`md:hidden ${isOpen ? 'block' : 'hidden'}`}
           initial={{ opacity: 0, height: 0 }}
-          animate={{ 
-            opacity: isOpen ? 1 : 0, 
-            height: isOpen ? 'auto' : 0 
-          }}
+          animate={{ opacity: isOpen ? 1 : 0, height: isOpen ? 'auto' : 0 }}
           transition={{ duration: 0.3 }}
         >
           <div className="px-2 pt-2 pb-3 space-y-1 bg-white dark:bg-gray-900 rounded-lg mt-2">
@@ -125,4 +107,4 @@ const Header = () => {
   );
 };
 
-export default Header; 
+export default Header;
