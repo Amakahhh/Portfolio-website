@@ -44,7 +44,7 @@ const Contact = () => {
           message: data.error || 'Something went wrong. Please try again.'
         });
       }
-    } catch (_) {
+    } catch (_unused) {
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'
@@ -53,6 +53,9 @@ const Contact = () => {
       setIsSubmitting(false);
     }
   };
+
+  // Fix unescaped apostrophes in JSX text
+  // Replace "Let's Work Together" and "I'm always open..." with escaped apostrophes
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -180,13 +183,13 @@ const Contact = () => {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">
-                Let's Work Together
-              </h3>
-              <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
-                I'm always open to discussing new opportunities, interesting projects, 
-                or just having a chat about technology and development.
-              </p>
+          <h3 className="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">
+            Let&apos;s Work Together
+          </h3>
+          <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+            I&apos;m always open to discussing new opportunities, interesting projects, 
+            or just having a chat about technology and development.
+          </p>
             </div>
 
             <div className="space-y-4">
