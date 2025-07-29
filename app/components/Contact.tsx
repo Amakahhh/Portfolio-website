@@ -44,7 +44,7 @@ const Contact = () => {
           message: data.error || 'Something went wrong. Please try again.'
         });
       }
-    } catch (_unused) {
+    } catch (_) {
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'
