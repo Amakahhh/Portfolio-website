@@ -35,7 +35,7 @@ const Contact = () => {
       if (response.ok) {
         setSubmitStatus({
           type: 'success',
-          message: data.message || 'Thank you for your message! I\'ll get back to you soon.'
+          message: data.message || 'Thank you for your message! I&apos;ll get back to you soon.'
         });
         setFormData({ name: '', email: '', message: '' });
       } else {
@@ -44,7 +44,7 @@ const Contact = () => {
           message: data.error || 'Something went wrong. Please try again.'
         });
       }
-    } catch (error) {
+    } catch (_) {
       setSubmitStatus({
         type: 'error',
         message: 'Network error. Please check your connection and try again.'

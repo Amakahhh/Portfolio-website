@@ -4,11 +4,19 @@ import { useFrame } from '@react-three/fiber';
 import { useRef, useState } from 'react';
 import * as THREE from 'three';
 
-const InteractiveCube = () => {
+interface InteractiveCubeProps {
+  projectData?: {
+    title: string;
+    description: string;
+    image: string;
+  };
+}
+
+const InteractiveCube = ({ projectData }: InteractiveCubeProps) => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  useFrame(() => {
+  useFrame((state) => {
     if (meshRef.current) {
       meshRef.current.rotation.x += 0.01;
       meshRef.current.rotation.y += 0.01;

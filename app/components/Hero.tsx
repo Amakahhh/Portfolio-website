@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from 'react';
 import { Mail, Download, ChevronDown } from 'lucide-react';
+import Image from 'next/image';
 import Button from './ui/Button';
 import Scene from './3D/Scene';
 import { animateHero } from '@/lib/animations';
@@ -47,10 +48,12 @@ const Hero = () => {
       <div className="relative z-10 text-center max-w-4xl mx-auto mt-20">
         {/* Profile Picture */}
         <div className="mb-6 flex justify-center">
-          <img
+          <Image
             src="/picture of kaka.jpg"
             alt="Ejike Chiamaka"
-            className="w-40 h-40 rounded-full object-cover border-4 border-blue-600 shadow-md"
+            width={160}
+            height={160}
+            className="rounded-full object-cover border-4 border-blue-600 shadow-md"
           />
         </div>
 
