@@ -1,8 +1,9 @@
-'use client';
+'use client'
 
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
+import Image from 'next/image';
 
 const projects = [
   {
@@ -77,9 +78,11 @@ const Projects = () => {
               className="bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden"
             >
               <div className="h-48 overflow-hidden">
-                <img
+                <Image
                   src={project.image}
                   alt={`${project.title} preview`}
+                  width={400}
+                  height={192}
                   className="w-full h-full object-cover"
                 />
               </div>
